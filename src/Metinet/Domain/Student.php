@@ -64,9 +64,9 @@ class Student implements User
         return $this->sponsor;
     }
 
-    public function createEvent(string $nom, string $description, string $objectif, DateEvent $date, Salle $salle, Bool $public): Event
+    public function createEvent(string $nom, string $description, string $objectif, DateEvent $date, Horaire $horaire,Salle $salle, Bool $public): Event
     {
-        return new Event($nom, $description, $objectif, $date, $salle, $this, $public);
+        return new Event($nom, $description, $objectif, $date, $horaire,$salle, $this, $public);
     }
 
     public function canParticipateEvent(Event $event): bool

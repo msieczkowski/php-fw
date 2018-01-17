@@ -15,6 +15,7 @@ class Event
     private $description;
     private $objectif;
     private $date;
+    private $horaire;
     private $salle;
     private $organisateur;
     private $public;
@@ -31,12 +32,13 @@ class Event
      * @param $organisateur
      * @param $public
      */
-    public function __construct(string $nom, string $description, string $objectif, DateEvent$date, Salle $salle, Student $organisateur, bool $public)
+    public function __construct(string $nom, string $description, string $objectif, DateEvent$date, Horaire $horaire,Salle $salle, Student $organisateur, bool $public)
     {
         $this->nom = $nom;
         $this->description = $description;
         $this->objectif = $objectif;
         $this->date = $date;
+        $this->horaire = $horaire;
         $this->salle = $salle;
         $this->organisateur = $organisateur;
         $this->public = $public;
@@ -107,6 +109,22 @@ class Event
     }
 
     /**
+     * @return Horaire
+     */
+    public function getHoraire(): Horaire
+    {
+        return $this->horaire;
+    }
+
+    /**
+     * @param Horaire $horaire
+     */
+    public function setHoraire(Horaire $horaire)
+    {
+        $this->horaire = $horaire;
+    }
+
+    /**
      * @return Salle
      */
     public function getSalle(): Salle
@@ -157,6 +175,14 @@ class Event
     public function getCapaciteMaximum(): int
     {
         return $this->salle->getCapaciteMaximum();
+    }
+
+    /**
+     * @return array
+     */
+    public function getParticipants(): array
+    {
+        return $this->participants;
     }
 
     public function addParticipant(User $user)
