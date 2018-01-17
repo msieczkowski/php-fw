@@ -187,6 +187,13 @@ class Event
 
     public function addParticipant(User $user)
     {
-        $this->participants = $user;
+        if(count($this->participants) < $this->getCapaciteMaximum())
+        {
+            $this->participants = $user;
+        }else
+        {
+
+        }
+
     }
 }
