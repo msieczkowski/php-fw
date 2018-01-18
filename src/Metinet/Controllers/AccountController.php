@@ -11,15 +11,16 @@ class AccountController
 {
     public function login(Request $request): Response
     {
-        $account = [new Account('maxime@test.com', 'test')];
-        $accountRepository = new AccountRepository($account);
 
         $email = $request->getQuery()->get('email');
         $password = $request->getQuery()->get('password');
 
-        $account = $accountRepository->verifyCredentials($email, $password);
+        $account = $GLOBALS['accountRepository']->verifyCredentials($email, $password);
 
-        session_start();
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
         $_SESSION['email'] = $account->getMail();
 
         return new Response(sprintf('hello %s, vous etes connecté ',$_SESSION['email']));
@@ -33,6 +34,17 @@ class AccountController
 
     public function register(Request $request): Response
     {
-        
+        $email = $request->getQuery()->get('email');
+        $password = $request->getQuery()->get('password');
+
+        if ($GLOBALS['accountRepository']->verifyExisting($email))
+        {
+            $account = new Account($email, $password);
+            $GLOBALS['accountRepository']->add($account);
+
+            //var_dump($GLOBALS['accountRepository']->all());
+
+            return new Response(sprintf('Le compte %s a bien été créé ',$email));
+        }
     }
 }

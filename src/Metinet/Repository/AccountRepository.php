@@ -54,4 +54,16 @@ class AccountRepository
         }
         throw new \Exception('Informations incorrectes',500);
     }
+
+    public function verifyExisting(string $email): bool
+    {
+        foreach ($this->accounts as $account)
+        {
+            if ($account->getMail() == $email)
+            {
+                throw new \Exception('Cet utilisateur existe déjà !',500);
+            }
+        }
+        return true;
+    }
 }
