@@ -14,8 +14,8 @@ class AccountController
 
         $email = $request->getQuery()->get('email');
         $password = $request->getQuery()->get('password');
-
-        $account = $GLOBALS['accountRepository']->verifyCredentials($email, $password);
+        $accountRepository = new AccountRepository();
+        $account = $accountRepository->verifyCredentials($email, $password);
 
         if(!isset($_SESSION)){
             session_start();
@@ -40,9 +40,8 @@ class AccountController
         if ($GLOBALS['accountRepository']->verifyExisting($email))
         {
             $account = new Account($email, $password);
-            $GLOBALS['accountRepository']->add($account);
-
-            //var_dump($GLOBALS['accountRepository']->all());
+            $accountRepository = new AccountRepository();
+            $accountRepository->add($account);
 
             return new Response(sprintf('Le compte %s a bien été créé ',$email));
         }

@@ -1,5 +1,6 @@
 {
   "logger": {
+    "type": "file",
     "path": "__DIR__/../var/logs/debug.log",
     "format": "%url% -> [%date%] - %message% !!!"
   },
