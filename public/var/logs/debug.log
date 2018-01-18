@@ -1,1 +1,7 @@
 /login -> [2018-01-18T11:16:10+00:00] - Informations incorrectes !!!
+/login -> [2018-01-18T11:21:12+00:00] - syntax error, unexpected 'new' (T_NEW) !!!
+/login -> [2018-01-18T11:21:21+00:00] - Argument 1 passed to Metinet\Repository\AccountRepository::__construct() must be of the type array, object given, called in C:\wamp64\www\php-fw\src\Metinet\Controllers\AccountController.php on line 19 !!!
+/login -> [2018-01-18T11:21:39+00:00] - syntax error, unexpected '[' !!!
+/login -> [2018-01-18T11:21:52+00:00] - Argument 1 passed to Metinet\Domain\Account::__construct() must be of the type string, array given, called in C:\wamp64\www\php-fw\src\Metinet\Controllers\AccountController.php on line 18 !!!
+/register -> [2018-01-18T11:23:11+00:00] - Call to a member function verifyExisting() on null !!!
+/register -> [2018-01-18T11:23:12+00:00] - Call to a member function verifyExisting() on null !!!

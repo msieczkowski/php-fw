@@ -14,7 +14,10 @@ class AccountController
 
         $email = $request->getQuery()->get('email');
         $password = $request->getQuery()->get('password');
-        $accountRepository = new AccountRepository();
+        //test
+        $account = [new Account('maxime@test.com', 'test')];
+        $accountRepository = new AccountRepository($account);
+        //test
         $account = $accountRepository->verifyCredentials($email, $password);
 
         if(!isset($_SESSION)){
